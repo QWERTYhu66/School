@@ -6,8 +6,6 @@
     <nav>
       <ul>
         <li><a href="#overview">Overview</a></li>
-        <li><a href="#topics">Topics</a></li>
-        <li><a href="#materials">Materials</a></li>
         <li><a href="#repository">GitHub Repo</a></li>
       </ul>
     </nav>
