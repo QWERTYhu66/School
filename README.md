@@ -27,8 +27,5 @@
       </a>
     </section>
   </div>
-  <footer>
-    <p>&copy; 2025 IGCSE Computer Science Work Dump. All rights reserved.</p>
-  </footer>
 </body>
 </html>
