@@ -33,5 +33,5 @@ while True:
     r, c = get_input()
     if grid[r][c] == "B": grid[r][c] = "X"; print("\nHIT!")
     elif grid[r][c] == ".": grid[r][c] = "O"; print("\nMISS")
-    else: print("\n🚢 Already tried!"); continue
+    else: print("\nAlready tried!"); continue
     if not any("B" in row for row in grid): print("\nYOU WIN!"); print_grid(True); break
