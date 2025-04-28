@@ -129,7 +129,7 @@ class Battle:
             print(log)
 
     def start_battle(self):
-        print(f"⚔️ Battle started between {self.trainer1.Name} and {self.trainer2.Name} ⚔️")
+        print(f"Battle started between {self.trainer1.Name} and {self.trainer2.Name}")
         while True:
             if self.turn % 2 == 1:
                 attacker = self.trainer1_pokemon
