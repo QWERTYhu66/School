@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      body { font-family: Arial, sans-serif; padding: 20px; }
+      input, button { padding: 8px; margin: 5px; width: 200px; }
+    </style>
+  </head>
+  <body>
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username"><br>
+    <input type="password" id="password" placeholder="Password"><br>
+    <button onclick="login()">Login</button>
+    <p id="result"></p>
+
+    <script>
+      const CSV_URL = "https://docs.google.com/spreadsheets/d/1rWGfhi_Ududh2Rt8BMfk-KzCcRQgHYaOMOAFgxH0KF8/export?format=csv";
+
+      async function fetchCSV() {
+        const response = await fetch(CSV_URL);
+        return await response.text();
+      }
+
+      function parseCSV(csv) {
+        const lines = csv.trim().split("\n");
+        const headers = lines[0].split(",");
+        return lines.slice(1).map(line => {
+          const values = line.split(",");
+          let row = {};
+          headers.forEach((header, i) => row[header.trim()] = values[i].trim());
+          return row;
+        });
+      }
+
+      async function login() {
+        const user = document.getElementById("username").value;
+        const pass = document.getElementById("password").value;
+        const result = document.getElementById("result");
+        result.textContent = "Checking...";
+
+        try {
+          const csv = await fetchCSV();
+          const users = parseCSV(csv);
+          const match = users.find(u => u.username === user && u.password === pass);
+          if (match) {
+            result.textContent = "Login successful!";
+          } else {
+            result.textContent = "Invalid username or password.";
+          }
+        } catch (e) {
+          result.textContent = "Error loading user data.";
+        }
+      }
+    </script>
+  </body>
+</html>
